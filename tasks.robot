@@ -5,6 +5,8 @@ Library             RPA.Browser.Selenium    auto_close=${FALSE}
 Library             RPA.HTTP
 Library             RPA.Excel.Files
 Library             RPA.PDF
+#Library             RPA.Robocorp.Vault
+Library             RPA.Robocloud.Secrets
 
 
 *** Tasks ***
@@ -23,8 +25,9 @@ Open the intranet website
     Open Available Browser    https://robotsparebinindustries.com/
 
 Log in
-    Input Text    username    maria
-    Input Password    password    thoushallnotpass
+    ${secret}=    Get Secret    robotsparebin
+    Input Text    username    ${secret}[username]
+    Input Password    password    ${secret}[password]
     Submit Form
     Wait Until Page Contains Element    id:sales-form
 
@@ -33,7 +36,7 @@ Download the Excel file
 
 Fill and submit the form for one person
     [Arguments]    ${sales_rep}
-    Wait Until Element Is Visible  firstname
+    Wait Until Element Is Visible    firstname
     Input Text    firstname    ${sales_rep}[First Name]
     Input Text    lastname    ${sales_rep}[Last Name]
     Input Text    salesresult    ${sales_rep}[Sales]
