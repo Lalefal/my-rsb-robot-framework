@@ -1,3 +1,4 @@
+I did these two:
 [Automation Certification Level I: Beginner's course - Robot Framework](https://robocorp.com/docs/courses/beginners-course) and
 
 [Software robot project workflow](https://robocorp.com/docs/courses/software-robot-project-workflow)
